@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="home.html"> -->
+    <a href="login.html"></a>
+</head>
+
+<body style="background-color: #aed6ff;">
+    <div class="container">
+        <table align="center"><br><br><br><br><br><br>
+            <tr>
+                <td>
+                    <center><h1>&nbsp;&nbsp;&nbsp;&nbsp; LOGIN FORM</h1></center>
+                </td>
+            </tr>
+            <tr>
+                <td> <label for="mail">Email</label> </td>
+                <td><input type="text" id="mail" name="Email"><span id="mail_err"></span></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+                <td><input type="password" id="password" name="Password"><span id="password_err"></span></td>
+            </tr>
+            <tr>
+                <td><form method="post" action="home.html"><input type="submit"value="Login" id="Login" name="Login" onclick="return login()"></form></td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    function login() {
+        var mail = document.getElementById('mail')
+        var password = document.getElementById('password')
+        var mail_pattern = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+
+
+        var mail_err = document.getElementById('mail_err')
+        var password_err = document.getElementById('password_err')
+
+        if (mail.value == "") {
+            mail_err.innerHTML = "Enter Email id"
+            mail_err.style.color = 'red'
+            mail.style.border = '1px solid red'
+            mail.focus()
+            return false
+        }
+        else {
+            if (mail.value.match(mail_pattern) == null) {
+                mail_err.innerHTML = "E-mail not in correct format"
+                mail_err.style.color = 'red'
+                mail.style.border = '1px solid red'
+                mail.focus()
+                return false
+            }
+            mail_err.innerHTML = ""
+            mail.style.border = '1px solid black'
+
+            if (password.value == "") {
+                password_err.innerHTML = "Enter the password"
+                password_err.style.color = 'red'
+                password.style.border = '1px solid red'
+                password.focus()
+                return false
+            }
+            else {
+                if (password.value.length < 8) {
+                    password_err.innerHTML = "password is too short"
+                    password.style.border = '1px solid red'
+                    return false
+
+                }
+                password_err.innerHTML = ""
+                password.style.border = '1px solid black'
+            }
+
+
+        }
+    }
+</script>
+
+</html>

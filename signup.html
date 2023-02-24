@@ -1,0 +1,163 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #aed6ff;">
+
+    <div class="container">
+
+        <table align="center"><br><br><br><br><br><br>
+            <tr>
+                <td>
+                    <center><h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SIGNUP FORM</h1></center>
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td> <label for="name">Name</label></td>
+                <td> <input type="text" id="name" name="name"><span id="name_err"></span></td>
+            </tr>
+            <tr>
+                <td> <label for="phone">Mobile_number</label></td>
+                <td> <input type="text" id="phone" name="Mobile_number"><span id="phone_err"></span></td>
+            </tr>
+            <tr>
+                <td> <label for="mail">Email</label></td>
+                <td> <input type="text" id="mail" name="Email"><span id="mail_err"></span></td>
+            </tr>
+            <tr>
+                <td> <label for="password">Password</label></td>
+                <td> <input type="password" id="password" name="password"><span id="password_err"></span></td>
+            </tr>
+            <tr>
+                <td> <label for="cpassword">Confirm_Password</label></td>
+                <td> <input type="password" id="cpassword" name="Confirm_password"><span id="cpassword_err"></span></td>
+            </tr>
+            <tr>
+                <td><form action="login.html" method="post"><input type="submit" value="signup" onclick="return signup()"></form></td>
+            </tr>
+        </table>
+        </form>
+    </div>
+</body>
+<script>
+    function signup() {
+        var name = document.getElementById('name')
+        var phone = document.getElementById('phone')
+        var mail = document.getElementById('mail')
+        var password = document.getElementById('password')
+        var cpassword = document.getElementById('cpassword')
+        var name_pattern = /^[A-Za-z]+$/
+        var phone_pattern = /^[789]\d{9}$/
+        var mail_pattern = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/
+
+
+        var name_err = document.getElementById('name_err')
+        var phone_err = document.getElementById('phone_err')
+        var mail_err = document.getElementById('mail_err')
+        var password_err = document.getElementById('password_err')
+        var cpassword_err = document.getElementById('cpassword_err')
+
+
+        if (name.value == "") {
+            name_err.innerHTML = "please enter the name"
+            name_err.style.color = 'red'
+            name.style.border = '1px solid red'
+            name.focus()
+            return false
+        }
+        else {
+            if (name.value.match(name_pattern) == null) {
+                name_err.innerHTML = "name must contain alphabets"
+                name_err.style.color = 'red'
+                name.style.border = '1px solid red'
+                name.focus()
+                return false
+
+            }
+
+            name_err.innerHTML = ""
+            name.style.border = '1px solid black'
+        }
+
+        if (phone.value == "") {
+            phone_err.innerHTML = "Enter the number"
+            phone_err.style.color = 'red'
+            phone.style.border = '1px solid red'
+            phone.focus()
+            return false
+        }
+        else {
+            if (phone.value.match(phone_pattern) == null) {
+                phone_err.innerHTML = "phone number not in correct format"
+                phone_err.style.color = 'red'
+                phone.style.border = '1px solid red'
+                phone.focus()
+                return false
+            }
+            phone_err.innerHTML = ""
+            phone.style.border = '1px solid black'
+        }
+
+        if (mail.value == "") {
+            mail_err.innerHTML = "Enter Email id"
+            mail_err.style.color = 'red'
+            mail.style.border = '1px solid red'
+            mail.focus()
+            return false
+        }
+        else {
+            if (mail.value.match(mail_pattern) == null) {
+                mail_err.innerHTML = "E-mail not in correct format"
+                mail_err.style.color = 'red'
+                mail.style.border = '1px solid red'
+                mail.focus()
+                return false
+            }
+            mail_err.innerHTML = ""
+            mail.style.border = '1px solid black'
+        }
+
+
+        if (password.value == "") {
+            password_err.innerHTML = "Enter the password"
+            password_err.style.color = 'red'
+            password.style.border = '1px solid red'
+            password.focus()
+            return false
+        }
+        else {
+            if (password.value.length < 8) {
+                password_err.innerHTML = "password is too short"
+                password.style.border = '1px solid red'
+                return false
+
+            }
+            password_err.innerHTML = ""
+            password.style.border = '1px solid black'
+        }
+        if (cpassword.vaue == "") {
+            cpassword_err.innerHTML = "Confirm password"
+            cpassword_err.style.border = '1px solid red'
+            cpassword.focus()
+            return false
+        }
+        else {
+            cpassword_err.innerHTML = ""
+            cpassword.style.border = '1px solid black'
+        }
+        if (password.value != cpassword.value) {
+            cpassword_err.innerHTML = "password mismatch"
+            cpassword_err.style.color = 'red'
+            cpassword.styl.border = '1px solid red'
+
+        }
+
+    }
+</script>
+</html>
